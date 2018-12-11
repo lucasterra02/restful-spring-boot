@@ -1,8 +1,9 @@
-package com.in28minutes.rest.webservices.restfulwebservices.user;
+package com.rest.restfulwebservices.user;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -18,11 +19,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.rest.restfulwebservices.user.service.UserService;
+
 @RestController
 public class UserResource {
 
 	@Autowired
-	private UserDaoService service;
+	private UserService service;
 
 	@GetMapping("/users")
 	public List<User> retrieveAllUsers() {
@@ -32,13 +35,9 @@ public class UserResource {
 	@GetMapping("/users/{id}")
 	public Resource<User> retrieveUser(@PathVariable int id) {
 
-		User user = service.findOne(id);
+		Optional<User> user = service.findOne(id);
 
-		if (user == null) {
-			throw new UserNotFoundException("id-" + id);
-		}
-
-		Resource<User> resource = new Resource<User>(user);
+		Resource<User> resource = new Resource<User>(user.get());
 
 		ControllerLinkBuilder linkTo = linkTo(methodOn(this.getClass()).retrieveAllUsers());
 
@@ -51,11 +50,7 @@ public class UserResource {
 	@DeleteMapping("/users/{id}")
 	public void deleteUser(@PathVariable int id) {
 
-		User user = service.deleteById(id);
-
-		if (user == null) {
-			throw new UserNotFoundException("id-" + id);
-		}
+		service.deleteById(id);
 
 	}
 
