@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import com.rest.restfulwebservices.user.UserNotFoundException;
+import com.rest.restfulwebservices.user.exception.UserNotFoundException;
 
 @ControllerAdvice
 @RestController

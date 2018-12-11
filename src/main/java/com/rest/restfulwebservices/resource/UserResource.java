@@ -1,4 +1,4 @@
-package com.rest.restfulwebservices.user;
+package com.rest.restfulwebservices.resource;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
 import java.net.URI;
@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.rest.restfulwebservices.model.User;
 import com.rest.restfulwebservices.user.service.UserService;
 
 @RestController
@@ -44,7 +45,6 @@ public class UserResource {
 		resource.add(linkTo.withRel("all-users"));
 
 		return resource;
-
 	}
 
 	@DeleteMapping("/users/{id}")

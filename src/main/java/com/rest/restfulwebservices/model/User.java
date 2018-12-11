@@ -1,4 +1,4 @@
-package com.rest.restfulwebservices.user;
+package com.rest.restfulwebservices.model;
 
 import java.util.Date;
 

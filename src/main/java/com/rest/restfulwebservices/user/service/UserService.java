@@ -6,9 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.rest.restfulwebservices.user.User;
-import com.rest.restfulwebservices.user.UserNotFoundException;
-import com.rest.restfulwebservices.user.respository.UserRepository;
+import com.rest.restfulwebservices.model.User;
+import com.rest.restfulwebservices.respository.UserRepository;
+import com.rest.restfulwebservices.user.exception.UserNotFoundException;
 
 @Component
 public class UserService {
