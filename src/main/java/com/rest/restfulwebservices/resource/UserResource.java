@@ -19,24 +19,29 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.rest.restfulwebservices.model.Post;
 import com.rest.restfulwebservices.model.User;
+import com.rest.restfulwebservices.user.service.PostService;
 import com.rest.restfulwebservices.user.service.UserService;
 
 @RestController
 public class UserResource {
 
 	@Autowired
-	private UserService service;
+	private UserService userService;
+
+	@Autowired
+	private PostService postService;
 
 	@GetMapping("/users")
 	public List<User> retrieveAllUsers() {
-		return service.findAll();
+		return userService.findAll();
 	}
 
 	@GetMapping("/users/{id}")
 	public Resource<User> retrieveUser(@PathVariable int id) {
 
-		Optional<User> user = service.findOne(id);
+		Optional<User> user = userService.findOne(id);
 
 		Resource<User> resource = new Resource<User>(user.get());
 
@@ -50,18 +55,43 @@ public class UserResource {
 	@DeleteMapping("/users/{id}")
 	public void deleteUser(@PathVariable int id) {
 
-		service.deleteById(id);
+		userService.deleteById(id);
 
 	}
 
 	@PostMapping("/users")
 	public ResponseEntity<Object> createUser(@Valid @RequestBody User user) {
-		User savedUser = service.save(user);
+		User savedUser = userService.save(user);
 
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedUser.getId())
 				.toUri();
 
 		return ResponseEntity.created(location).build();
+	}
+
+	@PostMapping("/users/{id}/posts")
+	public ResponseEntity<Object> createPostToUser(@PathVariable int id, @RequestBody Post post) {
+
+		Optional<User> userOptional = userService.findOne(id);
+
+		User user = userOptional.get();
+
+		post.setUser(user);
+
+		Post savedPost = postService.save(post);
+
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedPost.getId())
+				.toUri();
+
+		return ResponseEntity.created(location).build();
+	}
+
+	@GetMapping("/users/{id}/posts")
+	public List<Post> retrieveAllPostsUser(@PathVariable int id) {
+
+		Optional<User> user = userService.findOne(id);
+		return user.get().getPosts();
+
 	}
 
 }
