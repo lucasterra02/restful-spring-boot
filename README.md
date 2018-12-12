@@ -10,7 +10,7 @@ Maven 3.5.3
 H2 Database Engine
 Swagger 2
 
-##### Build:
+##### Maven Build:
 
 mvn clean install
 
@@ -18,22 +18,25 @@ mvn clean install
 
 mvn clean spring-boot:run
 
-Operações:
+##### Operações:
 
-GET: http://localhost:8080/users
-POST: http://localhost:8080/users
+GET http://localhost:8080/users
+
+POST http://localhost:8080/users
 
 exemplo de request body:
-
+```
 {
     "name": "daaaaaaaaaaaaaaaaaaaa",
     "birthDate": "2010-12-05T11:19:21.213+0000"
 }
+```
 
-POST: http://localhost:8080/users/10002/posts
+POST http://localhost:8080/users/10002/posts
 
 exemplo de request body:
-
+```
 {
     "description": "post faaaaaaaaaaaara"
 }
+```
