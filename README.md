@@ -11,13 +11,13 @@ H2 Database Engine
 Swagger 2
 
 ##### Maven Build:
-
+```
 mvn clean install
-
+```
 ##### Start da aplicação:
-
+```
 mvn clean spring-boot:run
-
+```
 ##### Operações:
 
 GET http://localhost:8080/users
@@ -27,7 +27,7 @@ POST http://localhost:8080/users
 exemplo de request body:
 ```
 {
-    "name": "daaaaaaaaaaaaaaaaaaaa",
+    "name": "Lucas",
     "birthDate": "2010-12-05T11:19:21.213+0000"
 }
 ```
@@ -37,6 +37,6 @@ POST http://localhost:8080/users/10002/posts
 exemplo de request body:
 ```
 {
-    "description": "post faaaaaaaaaaaara"
+    "description": "my first post"
 }
 ```
