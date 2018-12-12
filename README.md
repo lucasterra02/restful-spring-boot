@@ -44,3 +44,5 @@ POST http://localhost:8080/users/10002/posts
     "description": "my first post"
 }
 ```
+
+DELETE http://localhost:8080/users/1
