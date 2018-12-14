@@ -18,9 +18,9 @@ mvn clean install
 ```
 mvn clean spring-boot:run
 ```
-#### Operações:
+#### APIs
 
-##### Listando todos Users:
+#### Listando todos Users:
 GET http://localhost:8080/users
 
 #### Criando um novo User:
