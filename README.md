@@ -20,10 +20,10 @@ mvn clean spring-boot:run
 ```
 #### APIs
 
-#### Listando todos Users:
+#### Listando todos Usuário:
 GET http://localhost:8080/users
 
-#### Criando um novo User:
+#### Criando um novo Usuário:
 POST http://localhost:8080/users
 
 ###### request body:
@@ -33,7 +33,7 @@ POST http://localhost:8080/users
     "birthDate": "2010-12-05T11:19:21.213+0000"
 }
 ```
-#### Criando nova postagem para o User 10002:
+#### Criando nova postagem para o Usuário 10002:
 POST http://localhost:8080/users/10002/posts
 
 ###### request body:
@@ -42,7 +42,7 @@ POST http://localhost:8080/users/10002/posts
     "description": "my new post"
 }
 ```
-#### Listagem de todas postagens por Usuário 10002:
+#### Listagem de todas postagens do Usuário 10002:
 GET http://localhost:8080/users/10002/posts
 
 ##### Excluindo o User 1:
