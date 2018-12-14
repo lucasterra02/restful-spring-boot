@@ -47,3 +47,7 @@ GET http://localhost:8080/users/10002/posts
 
 ##### Excluindo o User 1:
 DELETE http://localhost:8080/users/1
+
+##### Caso deseje usar o client do Swagger para testar as APIs, segue a URL:
+
+###### http://localhost:8080/swagger-ui.html
