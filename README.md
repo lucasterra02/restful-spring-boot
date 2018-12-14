@@ -20,25 +20,27 @@ mvn clean spring-boot:run
 ```
 ##### Operações:
 
+##### Listando todos Users:
 GET http://localhost:8080/users
 
+##### Criando um novo User:
 POST http://localhost:8080/users
 
-###### exemplo de request body:
+###### request body:
 ```
 {
     "name": "Lucas",
     "birthDate": "2010-12-05T11:19:21.213+0000"
 }
 ```
-
+##### Criando novo post para o User 10002:
 POST http://localhost:8080/users/10002/posts
 
-###### exemplo de request body:
+###### request body:
 ```
 {
-    "description": "my first post"
+    "description": "my new post"
 }
 ```
-
+##### Excluindo o User 1:
 DELETE http://localhost:8080/users/1
